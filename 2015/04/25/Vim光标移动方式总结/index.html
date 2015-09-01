@@ -152,7 +152,7 @@
 
         
           <p>Vim作为一个超级超级强大的编辑器，要学的东西很多很多。很多知识当时看了或者用了几下，过几天就忘记了，沉淀不下来，所以专门记录下来是很有必要的。<br>作为编辑器最基本的输入光标移动，Vim与记事本常用的鼠标定位和键盘上下左右移动不同，Vim上的光标移动方式多种多样而且使用起来也更加灵活。<br><a id="more"></a><br>这里说明的光标移动操作都是基于Vim的默认模式<br>如果在编辑模式则需要按Esc进入默认模式</p>
-<p>###1. 上下左右移动<br>Vim也能使用键盘最基本的上下左右进行光标启动，但是为了更专注于输入，Vim分别将h、j、k、l对应左、下、上、右，使得我们不需要大幅度移动手掌就可以完成光标移动。</p>
+<h3 id="1-_上下左右移动">1. 上下左右移动</h3><p>Vim也能使用键盘最基本的上下左右进行光标启动，但是为了更专注于输入，Vim分别将h、j、k、l对应左、下、上、右，使得我们不需要大幅度移动手掌就可以完成光标移动。</p>
 <ul>
 <li>h&nbsp;&nbsp;←&nbsp;&nbsp;光标向左移动一位</li>
 <li>j&nbsp;&nbsp;↓&nbsp;&nbsp;光标向下移动一行</li>
@@ -160,7 +160,7 @@
 <li>l&nbsp;&nbsp;→&nbsp;&nbsp;光标向右移动一位</li>
 </ul>
 <p>同时Vim也提供进阶操作，使用<strong>数字+hjkl</strong>进行组合就可以更灵活的进行移动。如<br><strong>4h</strong>,光标向左移动4位<br><strong>5j</strong>,光标向下移动5行</p>
-<p>###2. 行内移动<br>Vim提供行内的快速定位，如移动到行尾或行首，跳转到下一个单词等</p>
+<h3 id="2-_行内移动">2. 行内移动</h3><p>Vim提供行内的快速定位，如移动到行尾或行首，跳转到下一个单词等</p>
 <ul>
 <li><strong>0</strong> &nbsp;&nbsp; 光标移动到行首</li>
 <li><strong>$</strong> &nbsp;&nbsp; 光标移动到行尾</li>
@@ -171,7 +171,7 @@
 <li><strong>ge</strong> &nbsp;&nbsp; 光标移动到本行上一个单词结尾</li>
 </ul>
 <p>与上下左右移动一样，行内单词移动也支持与数字进行组合操作，从而实现光标跳转n个单词。如<br><strong>4w</strong>,光标移动到本行下四个单词开头<br><strong>5e</strong>,光标移动到本行下五个单词结尾<br>……</p>
-<p>###3. 全局移动<br>Vim能非常方便进行全局光标移动，能快速跳转到内容开头或结尾，并且可以跳转到指定行等。<br>在编辑配置文件时经常需要在尾部添加自己的个性化属性，那么快速定位到内容尾部就非常有用了，而G也是我经常会使用的到的按键。</p>
+<h3 id="3-_全局移动">3. 全局移动</h3><p>Vim能非常方便进行全局光标移动，能快速跳转到内容开头或结尾，并且可以跳转到指定行等。<br>在编辑配置文件时经常需要在尾部添加自己的个性化属性，那么快速定位到内容尾部就非常有用了，而G也是我经常会使用的到的按键。</p>
 <ul>
 <li><strong>gg</strong> &nbsp;&nbsp; 光标移动到内容最顶部(第一行)</li>
 <li><strong>G</strong> &nbsp;&nbsp; 光标移动到内容最底部(最后一行)</li>
@@ -179,7 +179,7 @@
 <li><strong>Ctrl+b</strong> &nbsp;&nbsp; 内容向上翻页(相当于键盘PageUp)</li>
 <li><strong>Ctrl+f</strong> &nbsp;&nbsp; 内容向下翻页(相当于键盘PageDown)</li>
 </ul>
-<p>###4. 屏幕内移动<br>屏幕内移动指的是在编辑器目前显示的区域内移动，所以屏幕第一行并不一定等于文件内容的第一行</p>
+<h3 id="4-_屏幕内移动">4. 屏幕内移动</h3><p>屏幕内移动指的是在编辑器目前显示的区域内移动，所以屏幕第一行并不一定等于文件内容的第一行</p>
 <ul>
 <li><strong>H</strong> &nbsp;&nbsp; 光标移动到屏幕的第一行</li>
 <li><strong>M</strong> &nbsp;&nbsp; 光标移动到屏幕的中间</li>
@@ -234,7 +234,7 @@
     <div class="comments" id="comments">
       
         <div class="ds-thread" data-thread-key="2015/04/25/Vim光标移动方式总结/"
-             data-title="Vim光标移动方式总结" data-url="http://yoursite.com/2015/04/25/Vim光标移动方式总结/">
+             data-title="Vim光标移动方式总结" data-url="http://arenby.com/2015/04/25/Vim光标移动方式总结/">
         </div>
 
       
@@ -277,11 +277,11 @@
       <p class="site-description motion-element">分享 交流</p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">6</span>
+            <span class="site-state-item-count">7</span>
             <span class="site-state-item-name">标签</span>
         </div>
         <div class="site-state-item site-state-pages">
@@ -321,7 +321,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#个人总结"><span class="nav-text">个人总结</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_上下左右移动"><span class="nav-text">1. 上下左右移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_行内移动"><span class="nav-text">2. 行内移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_全局移动"><span class="nav-text">3. 全局移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_屏幕内移动"><span class="nav-text">4. 屏幕内移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#个人总结"><span class="nav-text">个人总结</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
