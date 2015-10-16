@@ -151,7 +151,11 @@
         
 
         
-          
+          <p>查找和替换是文本编辑器最常用的功能之一，在桌面操作系统中我们可以直接使用菜单中找到查找与替换，或者一般按下Common+F来使用查找Common+Alt+F来使用替换，操作非常直观。Vim没有可视化的界面，所以只能通过其命令模式来使用查找与替换功能。</p>
+<a id="more"></a>
+<h3 id="查找">查找</h3><p>命令模式下，输入 <span style="color:red">/</span> 然后输入要查找的内容，按下回车光标即可定位到第一个匹配的字符串上。<br>而输入 <span style="color:red">?</span> 后面跟要查找的内容也能得到同样的结果，<br><span style="color:red">/</span> 和 <span style="color:red">?</span> 的主要区别是 <span style="color:red">/</span> 从上往下查找， <span style="color:red">?</span> 从下往上查找<br>在查找时输入 <span style="color:red">n</span> 可将光标定位到下一个匹配内容的字符串上，<span style="color:red">N</span> 则相反，光标定位到上一个匹配的内容上。</p>
+<h3 id="替换">替换</h3><p>命令模式下，输入 <span style="color:red">s</span> 命令来替换字符串。<br><span style="color:red">s/被替换内容/替换内容/</span> 替换光标所在行第一个匹配的内容，如替换当前行第一个abc为def则 s/abc/def<br><span style="color:red">s/被替换内容/替换内容/g</span> 后面多了个字母g代表替换光标所在行所有匹配的内容，没有g则只替换匹配行的第一个<br><span style="color:red">n1,n2s/被替换内容/替换内容/g</span> 替换指定行匹配的内容，n1代表起始行，n2代表结束行 （tips: 如果n1为. n2为$ 则代表第一行到最后一行）<br><span style="color:red">%s/被替换内容/替换内容/g</span> 全文替换，即替换所有匹配的内容<br><br><br>如果需要替换的内容出现/，则一般的匹配命令无法正确的执行。<br>一种解决办法是使用转义字符，将包含/的内容改成<span style="color:red">\/</span><br>第二种解决办法是更换分隔符 <span style="color:red">#</span> ， s#被替换内容#替换内容#能实现相同的效果<br><br><br>另外还可以将匹配的内容替换成空字符来实现批量删除，如<span style="color:red">%s/被替换的内容//g</span></p>
+
         
       </div>
     
@@ -287,7 +291,7 @@
         <div class="post-toc">
           
           
-            <p class="post-toc-empty">此文章未包含目录</p>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换"><span class="nav-text">替换</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -160,6 +160,8 @@
 <p>我比较常用的方法是创建一个辅助属性，存储时将图片数组转换成字符串，使用时再将字符串转换成图片数组，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import CoreData&#10;&#10;class Product: NSManagedObject &#123;&#10;&#10;    @NSManaged var id: Int&#10;&#10;    @NSManaged var name: String&#10;&#10;    @NSManaged var images: String&#10;&#10;    var imageList: [String] &#123;&#10;        get &#123;&#10;            return images.componentsSeparatedByString(&#34;,&#34;)&#10;        &#125;&#10;        set &#123;&#10;            images = &#34;,&#34;.join(imageList)&#10;        &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="拓展-Python的实现方式">拓展-Python的实现方式</h4><p>字符串转数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seasons = &#34;Sprint, Summer, Autumn, Winter&#34;&#10;list = seasons.split(&#34;,&#34;)</span><br></pre></td></tr></table></figure></p>
 <p>数组转字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list = [&#34;Sprint&#34;, &#34;Summer&#34;, &#34;Autumn&#34;, &#34;Winter&#34;]&#10;seasons = &#34;,&#34;.join(list)</span><br></pre></td></tr></table></figure></p>
+<h4 id="一点补充">一点补充</h4><p>在使用字符串转数组时，我一直以为空字符串(“”)转成数组得到的结果是空数组(没有元素)，但在使用中才发现空字符串转换的数组是包含一个元素(空字符串)即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;&#34;.componentsSeparatedByString(&#34;,&#34;)&#10;//&#26368;&#21518;&#30340;&#32467;&#26524;&#20026; [&#34;&#34;]</span><br></pre></td></tr></table></figure></p>
+<p>所以遇到问题还是要多去实践，不能想当然，当是给自己的一个教训吧。</p>
 
         
       </div>
@@ -290,7 +292,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换方式"><span class="nav-text">转换方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拓展-Python的实现方式"><span class="nav-text">拓展-Python的实现方式</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换方式"><span class="nav-text">转换方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拓展-Python的实现方式"><span class="nav-text">拓展-Python的实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一点补充"><span class="nav-text">一点补充</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
