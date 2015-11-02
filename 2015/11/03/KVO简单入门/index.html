@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="Swift," />
+	<meta name="keywords" content="KVO,iOS," />
 
-  <title> Swift字符串和数组相互转换 // 欢欣之刃's Blog </title>
+  <title> KVO简单入门 // 欢欣之刃's Blog </title>
 </head>
 
 <body>
@@ -103,7 +103,7 @@
           
           
             
-              Swift字符串和数组相互转换
+              KVO简单入门
             
           
         </h1>
@@ -112,7 +112,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            发表于 2015-09-01
+            发表于 2015-11-02
           
         </span>
 
@@ -135,8 +135,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/09/01/Swift字符串和数组相互转换/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/Swift字符串和数组相互转换/"></span>
+            <a href="/2015/11/03/KVO简单入门/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/KVO简单入门/"></span>
             </a>
           </span>
           
@@ -151,17 +151,15 @@
         
 
         
-          <h4 id="转换方式">转换方式</h4><p>String转(字符串)换成Array(数组)，主要通过String提供的函数componentsSeparatedByString<br>按指定的字符串对源字符串进行分割来实现。如</p>
+          <p>KVO是Key-Value-Observing的简称，是Cocoa提供的一个强大特性。它的运行机制是每次指定的被观察的对象的属性被修改后，自动通知相应的观察者，这非常有利于我们实现很多松耦合结构。如利用KVO将数据和UI绑定就可以实现修改数据自动更新UI。iOS非常有名的开源项目MBProgressHUD里面就用到KVO来实现属性修改自动更新界面，有兴趣可以去下载源码看看。<br>说实话，做了两年iOS开发，在项目中使用到KVO的次数真的是非常少，所以一直也没有做深入的研究，只掌握了简单的用法。</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var seasons = &#34;Sprint, Summer, Autumn, Winter&#34;&#10;// &#23558;&#23383;&#31526;&#20018;&#29992; , &#20998;&#21106;&#10;var list = seasons.componentsSeparatedByString(&#34;,&#34;)  &#10;// list&#31867;&#22411;&#20026;[String] &#20540;&#20026;[&#34;Sprint&#34;, &#34;Summer&#34;, &#34;Autumn&#34;, &#34;Winter&#34;]&#10;println(list)</span><br></pre></td></tr></table></figure>
-<p>而Array转String可以通过String提供的join函数实现，join函数会将字符串依次与数组的元素进行拼接，但是要求数组元素必须是字符串类型[String]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var list = [&#34;Sprint&#34;, &#34;Summer&#34;, &#34;Autumn&#34;, &#34;Winter&#34;]&#10;// &#25968;&#32452;&#27599;&#20010;&#20803;&#32032;&#32452;&#25104;&#23383;&#31526;&#20018;&#65292;&#20803;&#32032;&#20043;&#38388;&#20351;&#29992; , &#20998;&#38548;&#10;var seasons = &#34;,&#34;.join(list)&#10;// seasons&#31867;&#22411;&#20026;String &#20540;&#20026;&#34;Sprint, Summer, Autumn, Winter&#34;&#10;println(seasons)</span><br></pre></td></tr></table></figure>
-<h4 id="使用场景">使用场景</h4><p>比如我们在项目中定义了一个产品的类(Product)，产品很很多图片(属性images)，使用CoreData做数据存储，但是服务器返回的图片是数组类型(如[“1.png”, “2.png”]),没办法直接存储到CoreData里。</p>
-<p>我比较常用的方法是创建一个辅助属性，存储时将图片数组转换成字符串，使用时再将字符串转换成图片数组，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import CoreData&#10;&#10;class Product: NSManagedObject &#123;&#10;&#10;    @NSManaged var id: Int&#10;&#10;    @NSManaged var name: String&#10;&#10;    @NSManaged var images: String&#10;&#10;    var imageList: [String] &#123;&#10;        get &#123;&#10;            return images.componentsSeparatedByString(&#34;,&#34;)&#10;        &#125;&#10;        set &#123;&#10;            images = &#34;,&#34;.join(imageList)&#10;        &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="拓展-Python的实现方式">拓展-Python的实现方式</h4><p>字符串转数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seasons = &#34;Sprint, Summer, Autumn, Winter&#34;&#10;list = seasons.split(&#34;,&#34;)</span><br></pre></td></tr></table></figure></p>
-<p>数组转字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list = [&#34;Sprint&#34;, &#34;Summer&#34;, &#34;Autumn&#34;, &#34;Winter&#34;]&#10;seasons = &#34;,&#34;.join(list)</span><br></pre></td></tr></table></figure></p>
-<h4 id="一点补充">一点补充</h4><p>在使用字符串转数组时，我一直以为空字符串(“”)转成数组得到的结果是空数组(没有元素)，但在使用中才发现空字符串转换的数组是包含一个元素(空字符串)即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;&#34;.componentsSeparatedByString(&#34;,&#34;)&#10;//&#26368;&#21518;&#30340;&#32467;&#26524;&#20026; [&#34;&#34;]</span><br></pre></td></tr></table></figure></p>
-<p>所以遇到问题还是要多去实践，不能想当然，当是给自己的一个教训吧。</p>
+<h3 id="用法说明">用法说明</h3><p>KVO主要通过将要被观察的对象调用addObserver方法与观察者的监听方法进行绑定，当观测的对象发生改变时会自动调用observerValueForKeyPath方法并传入观察对象相应的值。停止观察时需要调用removeObserver方法解除监听。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#20851;&#38190;API&#10;&#10;func addObserver(_ observer: NSObject,&#10;      forKeyPath keyPath: String,&#10;         options options: NSKeyValueObservingOptions,&#10;         context context: UnsafeMutablePointer&#60;Void&#62;)&#10;&#10;func observeValueForKeyPath(_ keyPath: String?,&#10;                   ofObject object: AnyObject?,&#10;                     change change: [String : AnyObject]?,&#10;                    context context: UnsafeMutablePointer&#60;Void&#62;)&#10;&#10;func removeObserver(_ observer: NSObject,&#10;         forKeyPath keyPath: String)</span><br></pre></td></tr></table></figure>
+<p>绑定监听时通过设置NSKeyValueObservingOptions可以调整被观察对象值改变时回调方法能获取到的值。如设置.New则回调方法可获取新设置的值，也可以组合使用获取多个值(.New | .Old)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">struct NSKeyValueObservingOptions : OptionSetType &#123;&#10;    init(rawValue rawValue: UInt)&#10;    static var New: NSKeyValueObservingOptions &#123; get &#125;&#10;    static var Old: NSKeyValueObservingOptions &#123; get &#125;&#10;    static var Initial: NSKeyValueObservingOptions &#123; get &#125;&#10;    static var Prior: NSKeyValueObservingOptions &#123; get &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="简单示例">简单示例</h3><p>在Swift中使用KVO需要设置对象为NSObject子类，并把需要观察的属性设置为dynamic。实例中被观察对象MyObj属性index值默认为0，使用TestKVO绑定为MyObj的观察者并监听index属性，当index修改为2时，自动触发了TestKVO中observerValueForKeyPath打印出index的新值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Foundation&#10;&#10;class MyObj: NSObject &#123;&#10;    dynamic var index = 0;&#10;&#125;&#10;&#10;class TestKVO: NSObject &#123;&#10;&#10;    var myObj = MyObj()&#10;&#10;    override init() &#123;&#10;        super.init()&#10;        print(&#34;index&#24403;&#21069;&#20540;&#20026;\(myObj.index)&#34;)&#10;        myObj.addObserver(self, forKeyPath: &#34;index&#34;, options: .New, context: &#38;myObj)&#10;    &#125;&#10;&#10;    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer&#60;Void&#62;) &#123;&#10;        if context == &#38;myObj &#123;&#10;            print(&#34;MyObj&#23646;&#24615;index&#21457;&#29983;&#21464;&#21270;&#65292;&#20540;&#20026;&#65306;\(change![NSKeyValueChangeNewKey])&#34;)&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;let testKVO = TestKVO()&#10;testKVO.myObj.index = 2</span><br></pre></td></tr></table></figure>
+<p><a href="/res/KVO.playground.zip">通过Playground查看</a></p>
 
         
       </div>
@@ -172,8 +170,12 @@
         
           <div class="post-tags">
             
-              <a href="/tags/Swift/">
-                #Swift
+              <a href="/tags/KVO/">
+                #KVO
+              </a>
+            
+              <a href="/tags/iOS/">
+                #iOS
               </a>
             
           </div>
@@ -183,13 +185,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2015/11/03/KVO简单入门/">KVO简单入门</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2015/07/16/我为什么要写博客/">我为什么要写博客</a>
+                <a href="/2015/09/01/Swift字符串和数组相互转换/">Swift字符串和数组相互转换</a>
               
             </div>
           </div>
@@ -206,8 +206,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/09/01/Swift字符串和数组相互转换/"
-             data-title="Swift字符串和数组相互转换" data-url="http://arenby.com/2015/09/01/Swift字符串和数组相互转换/">
+        <div class="ds-thread" data-thread-key="2015/11/03/KVO简单入门/"
+             data-title="KVO简单入门" data-url="http://arenby.com/2015/11/03/KVO简单入门/">
         </div>
 
       
@@ -294,7 +294,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换方式"><span class="nav-text">转换方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拓展-Python的实现方式"><span class="nav-text">拓展-Python的实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一点补充"><span class="nav-text">一点补充</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法说明"><span class="nav-text">用法说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单示例"><span class="nav-text">简单示例</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
