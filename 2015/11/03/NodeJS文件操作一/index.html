@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="Vim,编辑器," />
+	<meta name="keywords" content="NodeJS,文件操作," />
 
-  <title> Vim查找与替换 // 欢欣之刃's Blog </title>
+  <title> NodeJS文件操作一 // 欢欣之刃's Blog </title>
 </head>
 
 <body>
@@ -103,7 +103,7 @@
           
           
             
-              Vim查找与替换
+              NodeJS文件操作一
             
           
         </h1>
@@ -112,7 +112,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            Posté le 2015-05-16
+            Posté le 2015-11-03
           
         </span>
 
@@ -121,7 +121,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; In
               
-                <a href="/categories/工具集/">工具集</a>
+                <a href="/categories/编程/">编程</a>
 
                 
                 
@@ -135,8 +135,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/05/16/Vim查找与替换/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/16/Vim查找与替换/"></span>
+            <a href="/2015/11/03/NodeJS文件操作一/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/NodeJS文件操作一/"></span>
             </a>
           </span>
           
@@ -151,10 +151,17 @@
         
 
         
-          <p>查找和替换是文本编辑器最常用的功能之一，在桌面操作系统中我们可以直接使用菜单中找到查找与替换，或者一般按下Common+F来使用查找Common+Alt+F来使用替换，操作非常直观。Vim没有可视化的界面，所以只能通过其命令模式来使用查找与替换功能。</p>
-<a id="more"></a>
-<h3 id="查找">查找</h3><p>命令模式下，输入 <span style="color:red">/</span> 然后输入要查找的内容，按下回车光标即可定位到第一个匹配的字符串上。<br>而输入 <span style="color:red">?</span> 后面跟要查找的内容也能得到同样的结果，<br><span style="color:red">/</span> 和 <span style="color:red">?</span> 的主要区别是 <span style="color:red">/</span> 从上往下查找， <span style="color:red">?</span> 从下往上查找<br>在查找时输入 <span style="color:red">n</span> 可将光标定位到下一个匹配内容的字符串上，<span style="color:red">N</span> 则相反，光标定位到上一个匹配的内容上。</p>
-<h3 id="替换">替换</h3><p>命令模式下，输入 <span style="color:red">s</span> 命令来替换字符串。<br><span style="color:red">s/被替换内容/替换内容/</span> 替换光标所在行第一个匹配的内容，如替换当前行第一个abc为def则 s/abc/def<br><span style="color:red">s/被替换内容/替换内容/g</span> 后面多了个字母g代表替换光标所在行所有匹配的内容，没有g则只替换匹配行的第一个<br><span style="color:red">n1,n2s/被替换内容/替换内容/g</span> 替换指定行匹配的内容，n1代表起始行，n2代表结束行 （tips: 如果n1为. n2为$ 则代表第一行到最后一行）<br><span style="color:red">%s/被替换内容/替换内容/g</span> 全文替换，即替换所有匹配的内容<br><br><br>如果需要替换的内容出现/，则一般的匹配命令无法正确的执行。<br>一种解决办法是使用转义字符，将包含/的内容改成<span style="color:red">\/</span><br>第二种解决办法是更换分隔符 <span style="color:red">#</span> ， s#被替换内容#替换内容#能实现相同的效果<br><br><br>另外还可以将匹配的内容替换成空字符来实现批量删除，如<span style="color:red">%s/被替换的内容//g</span></p>
+          <p>NodeJS提供了基本的文件操作API，所以可以像Java、PHP等语言一样对文件进行读写等操作。<br>NodeJS内置了fs模块来专门操作文件，官方API文档<a href="https://nodejs.org/api/fs.html" target="_blank" rel="external">https://nodejs.org/api/fs.html</a>，使用时引入即可：var fs = require(‘fs’);<br><a id="more"></a></p>
+<h3 id="简单文件读写">简单文件读写</h3><ul>
+<li>fs.readFile(file[, options], callback)</li>
+<li>fs.readFileSync(file[, options])</li>
+<li>fs.writeFile(file, data[, options], callback)</li>
+<li>fs.writeFileSync(file, data[, options])</li>
+</ul>
+<p>readFileSync和writeFileSync方法在读写文件时会阻塞线程，读写文件完成后才能执行后面的操作。而readFile和writeFile则为异步方法，读写完成后执行回调，不阻塞线程。代码示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#35835;&#21462;message.txt&#25991;&#20214;&#20869;&#23481;&#65292;&#25351;&#23450;&#32534;&#30721;&#20026;utf8&#65292;&#23436;&#25104;&#21518;&#25171;&#21360;&#35835;&#21462;&#30340;&#20869;&#23481;&#10;var data = fs.readFileSync(&#39;message.txt&#39;, &#39;utf8&#39;);&#10;console.log(data);&#10;&#10;fs.readFile(&#39;message.txt&#39;, &#39;utf8&#39;, function(err, data) &#123;&#10;&#9;if (err) throw err;&#10; &#9;console.log(data);&#10;&#125;);&#10;&#10;&#10;// &#25226;&#25991;&#26412;Hello Node.js&#20889;&#20837;message.txt&#25991;&#20214;&#20013;&#65292;&#22914;&#25991;&#20214;&#19981;&#23384;&#22312;&#21017;&#33258;&#21160;&#21019;&#24314;&#35813;&#25991;&#20214;&#10;fs.writeFile(&#39;message.txt&#39;, &#39;Hello Node.js&#39;);&#10;&#10;fs.writeFile(&#39;message.txt&#39;, &#39;Hello Node.js&#39;, function (err) &#123;&#10;  if (err) throw err;&#10;  console.log(&#39;It\&#39;s saved!&#39;);&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="大文件读写">大文件读写</h3><p>上面提到的方法在进行文件读写时都是一次性把所有文件内容读取到内存后再一次性写入磁盘，但如果读取的文件过大，会使内存被占满导致程序无法继续执行。所以在进行大文件读写时只能读一点写一点。<br>因此我们需要创建文件的输入流(fs.createReadStream)和输入流(fs.createWriteStream)，并通过管道(pipe)将数据流连接起来，实现一边读一边写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#25226;1.txt&#20869;&#23481;&#20889;&#20837;&#21040;2.txt&#20013;&#10;fs.createReadStream(&#39;1.txt&#39;).pipe(fs.createWriteStream(&#39;2.txt&#39;));</span><br></pre></td></tr></table></figure></p>
+<h3 id="Buffer与String">Buffer与String</h3><p>JS语言自身只有字符串数据类型，没有二进制数据类型，因此NodeJS提供了一个与String对等的全局构造函数Buffer来提供对二进制数据的操作。官方API文档<a href="http://nodejs.org/api/buffer.html" target="_blank" rel="external">http://nodejs.org/api/buffer.html</a><br>使用fs.readFileSync如果不指定文件编码，则默认读取的内容为Buffer类型数据，如 <buffer 20="" 64="" 65="" 68="" 73="" 6c="" 6f="" 2c="" 6e="" 6a="" 2e="" 0a="">。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#25163;&#21160;&#21019;&#24314;&#19968;&#20010;Buffer&#10;var buffer = new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x6e, 0x6f, 0x64, 0x65, 0x6a, 0x73, 0x2e, 0x0a]);&#10;&#10;// Buffer&#36716;&#21270;&#20026;&#23383;&#31526;&#20018;&#10;var str = buffer.toString(&#39;utf8&#39;);</span><br></pre></td></tr></table></figure></buffer></p>
+<p>Buffer将JS的数据处理能力从字符串扩展到了任意二进制数据。</p>
 
         
       </div>
@@ -165,12 +172,12 @@
         
           <div class="post-tags">
             
-              <a href="/tags/Vim/">
-                #Vim
+              <a href="/tags/NodeJS/">
+                #NodeJS
               </a>
             
-              <a href="/tags/编辑器/">
-                #编辑器
+              <a href="/tags/文件操作/">
+                #文件操作
               </a>
             
           </div>
@@ -180,13 +187,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2015/07/16/我为什么要写博客/">我为什么要写博客</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2015/05/13/使用Gitolite搭建Git服务器/">使用Gitolite搭建Git服务器</a>
+                <a href="/2015/11/03/KVO简单入门/">KVO简单入门</a>
               
             </div>
           </div>
@@ -203,8 +208,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/05/16/Vim查找与替换/"
-             data-title="Vim查找与替换" data-url="http://arenby.com/2015/05/16/Vim查找与替换/">
+        <div class="ds-thread" data-thread-key="2015/11/03/NodeJS文件操作一/"
+             data-title="NodeJS文件操作一" data-url="http://arenby.com/2015/11/03/NodeJS文件操作一/">
         </div>
 
       
@@ -291,7 +296,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换"><span class="nav-text">替换</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单文件读写"><span class="nav-text">简单文件读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大文件读写"><span class="nav-text">大文件读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer与String"><span class="nav-text">Buffer与String</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
