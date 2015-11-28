@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift,iOS," />
+  <meta name="keywords" content="Go,编辑器," />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="KVO是Key-Value-Observing的简称，是Cocoa提供的一个强大特性。它的运行机制是每次指定的被观察的对象的属性被修改后，自动通知相应的观察者，这非常有利于我们实现很多松耦合结构。如利用KVO将数据和UI绑定就可以实现修改数据自动更新UI。iOS非常有名的开源项目MBProgressHUD里面就用到KVO来实现属性修改自动更新界面，有兴趣可以去下载源码看看。说实话，做了两年iOS开">
+<meta name="description" content="Golang有gocode、goimports、godoc等代码补全格式化工具，使得Golang可以直接使用众多文本编辑器来进行开发，如Vim、Emacs、Atom、Sublime等。而且代码补全和代码格式化功能确实非常完善，完全不输给Xcode、Android Studio等IDE的代码提示补全功能。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KVO简单入门">
-<meta property="og:url" content="http://arenby.com/2015/11/03/KVO简单入门/index.html">
+<meta property="og:title" content="我用过的Go语言的编辑器">
+<meta property="og:url" content="http://arenby.com/2015/11/26/我用过的Go语言的编辑器/index.html">
 <meta property="og:site_name" content="欢欣之刃's Blog">
-<meta property="og:description" content="KVO是Key-Value-Observing的简称，是Cocoa提供的一个强大特性。它的运行机制是每次指定的被观察的对象的属性被修改后，自动通知相应的观察者，这非常有利于我们实现很多松耦合结构。如利用KVO将数据和UI绑定就可以实现修改数据自动更新UI。iOS非常有名的开源项目MBProgressHUD里面就用到KVO来实现属性修改自动更新界面，有兴趣可以去下载源码看看。说实话，做了两年iOS开">
-<meta property="og:updated_time" content="2015-11-03T15:08:08.000Z">
+<meta property="og:description" content="Golang有gocode、goimports、godoc等代码补全格式化工具，使得Golang可以直接使用众多文本编辑器来进行开发，如Vim、Emacs、Atom、Sublime等。而且代码补全和代码格式化功能确实非常完善，完全不输给Xcode、Android Studio等IDE的代码提示补全功能。">
+<meta property="og:updated_time" content="2015-11-28T13:56:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KVO简单入门">
-<meta name="twitter:description" content="KVO是Key-Value-Observing的简称，是Cocoa提供的一个强大特性。它的运行机制是每次指定的被观察的对象的属性被修改后，自动通知相应的观察者，这非常有利于我们实现很多松耦合结构。如利用KVO将数据和UI绑定就可以实现修改数据自动更新UI。iOS非常有名的开源项目MBProgressHUD里面就用到KVO来实现属性修改自动更新界面，有兴趣可以去下载源码看看。说实话，做了两年iOS开">
+<meta name="twitter:title" content="我用过的Go语言的编辑器">
+<meta name="twitter:description" content="Golang有gocode、goimports、godoc等代码补全格式化工具，使得Golang可以直接使用众多文本编辑器来进行开发，如Vim、Emacs、Atom、Sublime等。而且代码补全和代码格式化功能确实非常完善，完全不输给Xcode、Android Studio等IDE的代码提示补全功能。">
 
 
 
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title> KVO简单入门 | 欢欣之刃's Blog </title>
+  <title> 我用过的Go语言的编辑器 | 欢欣之刃's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -210,7 +210,7 @@
             
             
               
-                KVO简单入门
+                我用过的Go语言的编辑器
               
             
           </h1>
@@ -222,8 +222,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-03T00:25:31+08:00" content="2015-11-03">
-              2015-11-03
+            <time itemprop="dateCreated" datetime="2015-11-26T08:57:42+08:00" content="2015-11-26">
+              2015-11-26
             </time>
           </span>
 
@@ -252,8 +252,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/03/KVO简单入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/KVO简单入门/" itemprop="commentsCount"></span>
+                <a href="/2015/11/26/我用过的Go语言的编辑器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/我用过的Go语言的编辑器/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -274,15 +274,19 @@
       
 
       
-        <p>KVO是Key-Value-Observing的简称，是Cocoa提供的一个强大特性。它的运行机制是每次指定的被观察的对象的属性被修改后，自动通知相应的观察者，这非常有利于我们实现很多松耦合结构。如利用KVO将数据和UI绑定就可以实现修改数据自动更新UI。iOS非常有名的开源项目MBProgressHUD里面就用到KVO来实现属性修改自动更新界面，有兴趣可以去下载源码看看。<br>说实话，做了两年iOS开发，在项目中使用到KVO的次数真的是非常少，所以一直也没有做深入的研究，只掌握了简单的用法。</p>
-<a id="more"></a>
-<h3 id="用法说明">用法说明</h3><p>KVO主要通过将要被观察的对象调用addObserver方法与观察者的监听方法进行绑定，当观测的对象发生改变时会自动调用observerValueForKeyPath方法并传入观察对象相应的值。停止观察时需要调用removeObserver方法解除监听。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#20851;&#38190;API&#10;&#10;func addObserver(_ observer: NSObject,&#10;      forKeyPath keyPath: String,&#10;         options options: NSKeyValueObservingOptions,&#10;         context context: UnsafeMutablePointer&#60;Void&#62;)&#10;&#10;func observeValueForKeyPath(_ keyPath: String?,&#10;                   ofObject object: AnyObject?,&#10;                     change change: [String : AnyObject]?,&#10;                    context context: UnsafeMutablePointer&#60;Void&#62;)&#10;&#10;func removeObserver(_ observer: NSObject,&#10;         forKeyPath keyPath: String)</span><br></pre></td></tr></table></figure>
-<p>绑定监听时通过设置NSKeyValueObservingOptions可以调整被观察对象值改变时回调方法能获取到的值。如设置.New则回调方法可获取新设置的值，也可以组合使用获取多个值(.New | .Old)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">struct NSKeyValueObservingOptions : OptionSetType &#123;&#10;    init(rawValue rawValue: UInt)&#10;    static var New: NSKeyValueObservingOptions &#123; get &#125;&#10;    static var Old: NSKeyValueObservingOptions &#123; get &#125;&#10;    static var Initial: NSKeyValueObservingOptions &#123; get &#125;&#10;    static var Prior: NSKeyValueObservingOptions &#123; get &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="简单示例">简单示例</h3><p>在Swift中使用KVO需要设置对象为NSObject子类，并把需要观察的属性设置为dynamic。实例中被观察对象MyObj属性index值默认为0，使用TestKVO绑定为MyObj的观察者并监听index属性，当index修改为2时，自动触发了TestKVO中observerValueForKeyPath打印出index的新值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Foundation&#10;&#10;class MyObj: NSObject &#123;&#10;    dynamic var index = 0;&#10;&#125;&#10;&#10;class TestKVO: NSObject &#123;&#10;&#10;    var myObj = MyObj()&#10;&#10;    override init() &#123;&#10;        super.init()&#10;        print(&#34;index&#24403;&#21069;&#20540;&#20026;\(myObj.index)&#34;)&#10;        myObj.addObserver(self, forKeyPath: &#34;index&#34;, options: .New, context: &#38;myObj)&#10;    &#125;&#10;&#10;    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer&#60;Void&#62;) &#123;&#10;        if context == &#38;myObj &#123;&#10;            print(&#34;MyObj&#23646;&#24615;index&#21457;&#29983;&#21464;&#21270;&#65292;&#20540;&#20026;&#65306;\(change![NSKeyValueChangeNewKey])&#34;)&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;let testKVO = TestKVO()&#10;testKVO.myObj.index = 2</span><br></pre></td></tr></table></figure>
-<p><a href="/res/KVO.playground.zip">通过Playground查看</a></p>
+        <p>Golang有<a href="https://github.com/nsf/gocode" target="_blank" rel="external">gocode</a>、<a href="https://golang.org/x/tools/imports" target="_blank" rel="external">goimports</a>、<a href="https://golang.org/x/tools/imports" target="_blank" rel="external">godoc</a>等代码补全格式化工具，使得Golang可以直接使用众多文本编辑器来进行开发，如Vim、Emacs、Atom、Sublime等。<br>而且代码补全和代码格式化功能确实非常完善，完全不输给Xcode、Android Studio等IDE的代码提示补全功能。<br><a id="more"></a></p>
+<h3 id="Go常用工具安装">Go常用工具安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># gofmt &#35821;&#35328;&#33258;&#24102;&#65292;&#25552;&#20379;&#33258;&#21160;&#20195;&#30721;&#25972;&#29702;&#10;&#10;# &#23433;&#35013;gocode &#25552;&#20379;&#20195;&#30721;&#34917;&#20840;&#10;go get -u github.com/nsf/gocode&#10;&#10;#&#23433;&#35013;golint &#20195;&#30721;&#35821;&#27861;&#26816;&#26597;&#10;go get github.com/golang/lint&#10;&#10;#&#23433;&#35013;goimports &#33258;&#21160;&#25972;&#29702;imports&#10;go get golang.org/x/tools/cmd/goimports&#10;&#10;# &#23433;&#35013;gooracle &#20195;&#30721;callgraph&#26597;&#35810;&#10;go get code.google.com/p/go.tools/cmd/oracle&#10;&#10;# &#23433;&#35013;godef &#20195;&#30721;&#36339;&#36716;&#10;go get code.google.com/p/rog-go/exp/cmd/godef</span><br></pre></td></tr></table></figure>
+<h3 id="Atom">Atom</h3><p>我最初开发Go语言程序使用的是<a href="https://atom.io" target="_blank" rel="external">Atom</a>，这个由Github团队开发的编辑器是完全免费的，并且支持插件扩展，可配置性非常高，同时Atom也支持 Windows、Mac、Linux三大平台。<br>Atom支持Golang语法高亮、代码补全等功能非常简单，只需要安装<a href="https://atom.io/packages/go-plus" target="_blank" rel="external">go-plus</a>这个包即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#21629;&#20196;&#34892;&#26041;&#24335;&#23433;&#35013;&#10;apm install go-plus&#10;&#10;#&#22270;&#24418;&#30028;&#38754;&#23433;&#35013;&#65292;&#25171;&#24320;Preferences &#62; Install&#65292;&#25628;&#32034;go-plus&#28982;&#21518;&#28857;&#20987;&#23433;&#35013;&#21363;&#21487;</span><br></pre></td></tr></table></figure></p>
+<p>用Atom开发了一段时间Golang，渐渐发现Atom启动速度比较慢，尤其是在公司那台还用着机械硬盘的iMac上，有时点击打开一个文件要等好几十秒，<br>而且我指定编辑某个文件还会连上次关闭的文件和目录都打开，感觉特别麻烦。</p>
+<h3 id="Sublime_Text_3">Sublime Text 3</h3><p>因为Atom启动慢的问题，所以就换成了很多人推荐的<a href="http://www.sublimetext.com/3" target="_blank" rel="external">Sublime</a>。Sublime使用方式跟Atom的使用方式非常类似，所以转过来也不怎么费时间上手。<br>安装好Sublime后还需要安装<a href="https://packagecontrol.io" target="_blank" rel="external">Package Control</a>才能安装包。<br>打开Sublime的命令行：</p>
+<ol>
+<li>ctrl+`</li>
+<li>View &gt; Show Console<h4 id="然后把下面的代码粘贴并回车即可自动安装">然后把下面的代码粘贴并回车即可自动安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = &#39;2915d1851351e5ee549c20394736b442&#39; + &#39;8bc59f460fa1548d1514676163dafc88&#39;; pf = &#39;Package Control.sublime-package&#39;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#39;http://packagecontrol.io/&#39; + pf.replace(&#39; &#39;, &#39;%20&#39;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#39;Error validating download (got %s instead of %s), please try manual install&#39; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#39;wb&#39; ).write(by)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用Package Control安装GoSublime、SidebarEnhancements和Go Build这三个包。</p>
+<h3 id="Visual_Studio_Code">Visual Studio Code</h3><p><a href="https://www.visualstudio.com/products/code-vs" target="_blank" rel="external">Visual Studio Code</a>是微软基于Atom核心做的一款代码编辑器，但是启动速度比Atom快了不少。因为解决了Atom启动慢的缺点，所以果断转到Visual Studio Code来开发。<br>安装好VSCode后，也需要安装插件来支持Go的各种功能，Atom和Sublime叫Package，而VSCode叫Extension。安装插件方法跟Atom和Sublime类似，插件地址<a href="https://marketplace.visualstudio.com/items/lukehoban.Go" target="_blank" rel="external">https://marketplace.visualstudio.com/items/lukehoban.Go</a>。<br>另外VSCode还支持Go语言的debug功能，不过需要额外安装delve，并且不支持Windows。Mac OS X的安装方法在<a href="https://github.com/derekparker/delve/wiki/Tips-&amp;-Troubleshooting" target="_blank" rel="external">https://github.com/derekparker/delve/wiki/Tips-&amp;-Troubleshooting</a>。</p>
+<h3 id="LiteIDE">LiteIDE</h3><p><a href="http://sourceforge.net/projects/liteide/files/" target="_blank" rel="external">LiteIDE</a>是比较全面的开发Go语言的IDE，各方面都不错，只是我只是业余谢谢Go，普通的文本编辑器更适合我。</p>
 
       
     </div>
@@ -291,9 +295,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift/" rel="tag">#Swift</a>
+            <a href="/tags/Go/" rel="tag">#Go</a>
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
+            <a href="/tags/编辑器/" rel="tag">#编辑器</a>
           
         </div>
       
@@ -302,17 +306,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/01/Swift字符串和数组相互转换/" rel="next" title="Swift字符串和数组相互转换">
-                <i class="fa fa-chevron-left"></i> Swift字符串和数组相互转换
+              <a href="/2015/11/03/NodeJS文件操作一/" rel="next" title="NodeJS文件操作一">
+                <i class="fa fa-chevron-left"></i> NodeJS文件操作一
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/03/NodeJS文件操作一/" rel="prev" title="NodeJS文件操作一">
-                NodeJS文件操作一 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -338,8 +338,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/03/KVO简单入门/"
-           data-title="KVO简单入门" data-url="http://arenby.com/2015/11/03/KVO简单入门/">
+      <div class="ds-thread" data-thread-key="2015/11/26/我用过的Go语言的编辑器/"
+           data-title="我用过的Go语言的编辑器" data-url="http://arenby.com/2015/11/26/我用过的Go语言的编辑器/">
       </div>
     
   </div>
@@ -456,7 +456,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法说明"><span class="nav-number">1.</span> <span class="nav-text">用法说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单示例"><span class="nav-number">2.</span> <span class="nav-text">简单示例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Go常用工具安装"><span class="nav-number">1.</span> <span class="nav-text">Go常用工具安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Atom"><span class="nav-number">2.</span> <span class="nav-text">Atom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sublime_Text_3"><span class="nav-number">3.</span> <span class="nav-text">Sublime Text 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#然后把下面的代码粘贴并回车即可自动安装"><span class="nav-number">3.1.</span> <span class="nav-text">然后把下面的代码粘贴并回车即可自动安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual_Studio_Code"><span class="nav-number">4.</span> <span class="nav-text">Visual Studio Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LiteIDE"><span class="nav-number">5.</span> <span class="nav-text">LiteIDE</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
